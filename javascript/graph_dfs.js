@@ -3,13 +3,12 @@ function isPath(graph, vertexA, vertexB) {
   if (!graph[vertexA]) return false;
   if (graph[vertexA].indexOf(vertexB) >= 0) return true;
 
-  let isAdjacent = false;
   for (vertex of graph[vertexA]){
     const newGraph = {...graph}
     delete newGraph[vertexA];
-    if (isPath(newGraph, vertex, vertexB)) isAdjacent = true;
+    if (isPath(newGraph, vertex, vertexB)) return true;
   }
-  return isAdjacent;
+  return false;
 }
 
 if (require.main === module) {
